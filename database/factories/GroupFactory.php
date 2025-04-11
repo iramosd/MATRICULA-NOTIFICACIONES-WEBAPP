@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ParentGroup>
  */
-class ParentGroupFactory extends Factory
+class GroupFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class ParentGroupFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'name' => $this->faker->unique()->name(),
+            'description' => $this->faker->text(),
         ];
     }
 }
