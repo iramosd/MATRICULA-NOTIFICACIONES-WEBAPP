@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        User::factory()->create([
+            'name' => 'Ismael Ramos',
+            'email' => 'ramosdumas_ismael@hotmail.com',
+            'password' => bcrypt('password12345'),
+        ]);
+        
         if (config('app.env') === 'local' || config('app.env') === 'testing') {
             $this->call([
                 AcademySeeder::class,
@@ -20,12 +26,6 @@ class DatabaseSeeder extends Seeder
                 EnrollmentSeeder::class,
                 PaymentSeeder::class,
                 CommunicationSeeder::class,
-            ]);
-        } else {
-            User::factory()->create([
-                'name' => 'Ismael Ramos',
-                'email' => 'ramosdumas_ismael@hotmail.com',
-                'password' => bcrypt('password12345'),
             ]);
         }
     }

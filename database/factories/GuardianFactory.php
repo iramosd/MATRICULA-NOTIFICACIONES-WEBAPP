@@ -16,6 +16,7 @@ class GuardianFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
+            'password' => $this->faker->password(),
         ];
     }
 }

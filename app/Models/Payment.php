@@ -16,6 +16,7 @@ class Payment extends Model
         'method',
         'amount',
         'payment_date',
+        'enrollment_id',
     ];
 
     protected $casts = [

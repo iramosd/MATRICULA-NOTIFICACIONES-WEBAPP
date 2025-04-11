@@ -9,18 +9,23 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseService implements CourseServiceInterface
 {
-    public function list(?array $request = null): LengthAwarePaginator
+    public function list(?array $request = null, ?array $with = []): LengthAwarePaginator
     {
+        if (count($with) > 0) return Course::with($with)->paginate();
+        
+
         return Course::paginate();
     }
 
-    public function show(Course $course): ?Course
+    public function show(Course $course, ?array $with = []): ?Course
     {
+        if (count($with) > 0) return $course->load($with);
+        
         return $course;
     }
 
     public function create(array $data): Course
-    {
+    {   
         return Course::create($data);
     }
 

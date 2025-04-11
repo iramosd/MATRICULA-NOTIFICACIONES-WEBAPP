@@ -8,13 +8,17 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PaymentService implements PaymentServiceInterface
 {
-    public function list(?array $request = null): LengthAwarePaginator
+    public function list(?array $request = null, ?array $with = []): LengthAwarePaginator
     {
+        if (count($with) > 0) return Payment::with($with)->paginate();
+
         return Payment::paginate();
     }
 
-    public function show(Payment $payment): ?Payment
+    public function show(Payment $payment, ?array $with = []): ?Payment
     {
+        if (count($with) > 0) return $payment->load($with);
+
         return $payment;
     }
 

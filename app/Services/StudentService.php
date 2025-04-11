@@ -8,13 +8,17 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class StudentService implements StudentServiceInterface
 {
-    public function list(?array $request = null): LengthAwarePaginator
+    public function list(?array $request = null, ?array $with = []): LengthAwarePaginator
     {
+        if (count($with) > 0) return Student::with($with)->paginate();
+
         return Student::paginate();
     }
 
-    public function show(Student $student): ?Student
+    public function show(Student $student, ?array $with = []): ?Student
     {
+        if (count($with) > 0) return $student->load($with);
+
         return $student;
     }
 

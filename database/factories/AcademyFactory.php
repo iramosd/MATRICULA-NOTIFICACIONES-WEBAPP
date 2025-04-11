@@ -9,7 +9,7 @@ class AcademyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->company(),
+            'name' => $this->faker->unique()->name(),
             'description' => $this->faker->text(),
             'address' => $this->faker->address(),
             'phone' => $this->faker->phoneNumber(),

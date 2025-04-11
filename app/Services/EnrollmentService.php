@@ -10,11 +10,13 @@ class EnrollmentService implements EnrollmentServiceInterface
 {
     public function list(?array $request = null): LengthAwarePaginator
     {
-        return Enrollment::paginate();
+        return Enrollment::with(['course', 'student'])->paginate();
     }
 
-    public function show(Enrollment $enrollment): ?Enrollment
+    public function show(Enrollment $enrollment, ?array $with = []): ?Enrollment
     {
+        if (count($with) > 0) return $enrollment->load($with);
+
         return $enrollment;
     }
 

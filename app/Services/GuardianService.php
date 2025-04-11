@@ -8,13 +8,17 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class GuardianService implements GuardianServiceInterface
 {
-    public function list(?array $request = null): LengthAwarePaginator
+    public function list(?array $request = null, ?array $with = []): LengthAwarePaginator
     {
+        if (count($with) > 0) return Guardian::with($with)->paginate();
+
         return Guardian::paginate();
     }
 
-    public function show(Guardian $guardian): ?Guardian
+    public function show(Guardian $guardian, ?array $with = []): ?Guardian
     {
+        if (count($with) > 0) return $guardian->load($with);
+
         return $guardian;
     }
 
