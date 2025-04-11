@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\PaymentMethodEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,10 +19,11 @@ class Payment extends Model
     ];
 
     protected $casts = [
+        'method' => PaymentMethodEnum::class,
+        'payment_date' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
-        'payment_date' => 'date',
     ];
     
     public function enrollment(): BelongsTo

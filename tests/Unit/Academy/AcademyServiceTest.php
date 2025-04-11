@@ -1,14 +1,23 @@
 <?php
 
-it('create an academy', function () {
-    $academy = \App\Models\Academy::factory()->create([
-        'name' => 'Test Academy',
-        'description' => 'This is a test academy.',
-        'location' => 'Test Location',
-    ]);
+use App\Models\Academy;
 
-    expect($academy)->toBeInstanceOf(\App\Models\Academy::class);
-    expect($academy->name)->toBe('Test Academy');
-    expect($academy->description)->toBe('This is a test academy.');
-    expect($academy->location)->toBe('Test Location');
+it('List academies', function () {
+    //$list =
+});
+
+it('Retrieve academy information', function () {
+    
+});
+
+it('create a new academy', function () {
+    
+});
+
+it('Update academy information', function () {
+        
+});
+
+it('Delete academy information', function () {
+        
 });

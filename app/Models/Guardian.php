@@ -23,8 +23,14 @@ class Guardian extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
+
     public function students(): HasMany
     {
         return $this->hasMany(Student::class);
+    }
+
+    public function groups(): HasMany
+    {
+        return $this->hasMany(Group::class);
     }
 }
