@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Contracts\CourseServiceInterface;
 use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseService implements CourseServiceInterface
@@ -33,14 +34,14 @@ class CourseService implements CourseServiceInterface
         return $course->delete();
     }
 
-    public function addStudent(Course $course, Student $student): Enrollment
+    public function addStudent(Course $course, Student $student): bool
     {
-        return $course->enrollments()->create(['student_id' => $student->id]);
+        return true;
     }
 
     public function removeStudent(int $academyId): bool
     {
-        return $academyId->delete();
+        return true;
     }
     
 }

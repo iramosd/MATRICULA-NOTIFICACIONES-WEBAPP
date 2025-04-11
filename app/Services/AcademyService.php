@@ -1,6 +1,3 @@
-use App\Contracts\AcademyServiceInterface;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-
 <?php
 namespace App\Services;
 

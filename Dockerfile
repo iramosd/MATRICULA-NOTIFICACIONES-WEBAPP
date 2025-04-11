@@ -9,7 +9,7 @@ RUN add-apt-repository ppa:ondrej/php -y
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
-RUN apt-get install -y PHP8.2 PHP8.2-mcrypt PHP8.2-gd PHP8.2-curl PHP8.2-mysql PHP8.2-zip PHP8.2-xml PHP8.2-soap PHP8.2-intl PHP8.2-mbstring PHP8.2-bcmath
+RUN apt-get install -y sqlite3 php8.2-sqlite3 PHP8.2 PHP8.2-mcrypt PHP8.2-gd PHP8.2-curl PHP8.2-mysql PHP8.2-zip PHP8.2-xml PHP8.2-soap PHP8.2-intl PHP8.2-mbstring PHP8.2-bcmath
 
 RUN apt-get install -y composer dos2unix && composer config --global process-timeout 1500
 

@@ -13,6 +13,6 @@ interface CourseServiceInterface
     public function create(array $data): Course;
     public function update(Course $course, array $data): bool;
     public function delete(Course $course): bool;
-    public function addStudent(Course $course, Student $student): Enrollment;
+    public function addStudent(Course $course, Student $student): bool;
     public function removeStudent(int $academyId): bool;
 }
