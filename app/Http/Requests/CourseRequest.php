@@ -26,11 +26,7 @@ class CourseRequest extends FormRequest
         $course = $this->route('course');
 
         return [
-            'name' => [
-                'required', 
-                'string', 
-                Rule::unique('courses')->ignore($course)
-            ],
+            'name' => ['required', 'string'],
             'description' => ['required', 'string'],
             'cost' => ['required', 'numeric'],
             'duration' => ['required', 'integer'],

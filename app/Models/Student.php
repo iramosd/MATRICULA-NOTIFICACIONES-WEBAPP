@@ -16,6 +16,7 @@ class Student extends Model
         'first_name',
         'last_name',
         'birth_date',
+        'guardian_id'
     ];
 
     protected $casts = [

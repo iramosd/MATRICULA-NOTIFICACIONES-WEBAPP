@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('cost', total: 12, places: 2);
             $table->string('duration');
-            $table->string('image')->nullable();
             $table->string('modality')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('academy_id');
             $table->timestamps();
             $table->softDeletes();

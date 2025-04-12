@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Contracts\EnrollmentServiceInterface;
+use App\Enum\EnrollmentStatusEnum;
 use App\Models\Enrollment;
+use App\Models\Student;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class EnrollmentService implements EnrollmentServiceInterface
@@ -13,8 +15,12 @@ class EnrollmentService implements EnrollmentServiceInterface
         return Enrollment::with(['course', 'student'])->paginate();
     }
 
-    public function show(Enrollment $enrollment, ?array $with = []): ?Enrollment
+    public function show(Enrollment | string | int $enrollment, ?array $with = []): ?Enrollment
     {
+        if(! $enrollment instanceof Enrollment){
+            $enrollment = Enrollment::find($enrollment);
+        }
+
         if (count($with) > 0) return $enrollment->load($with);
 
         return $enrollment;
@@ -22,7 +28,13 @@ class EnrollmentService implements EnrollmentServiceInterface
 
     public function create(array $data): Enrollment
     {
-        return Enrollment::create($data);
+        return Enrollment::firstOrCreate([
+            'student_id' => $data['student_id'],
+            'course_id' => $data['course_id'],
+        ], [
+            'notes' => $data['notes'] ?? null,
+            'status' => $data['status'] ?? EnrollmentStatusEnum::INACTIVE,
+        ]);
     }
 
     public function update(Enrollment $enrollment, array $data): bool
@@ -33,5 +45,21 @@ class EnrollmentService implements EnrollmentServiceInterface
     public function delete(Enrollment $enrollment): bool
     {
         return $enrollment->delete();
+    }
+
+    public function enrollStudent(int | string $courseId, array $studentData): bool
+    {
+        $enrollment = null;
+        $student = (new StudentService)->create($studentData);
+        
+        if(! $student instanceof Student) return false;
+        
+        $enrollment = $this->create([
+                'student_id' => $student->id,
+                'course_id' => $courseId,
+                'status' => EnrollmentStatusEnum::INACTIVE,
+            ]);
+        
+        return $enrollment instanceof Enrollment;
     }
 }

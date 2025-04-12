@@ -80,7 +80,7 @@
     <p class="menu-label">General</p>
     <ul class="menu-list">
       <li class="active">
-        <a href="index.html">
+        <a href="{{route('dashboard')}}">
           <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
           <span class="menu-item-label">Cursos</span>
         </a>
@@ -88,14 +88,14 @@
     </ul>
     <ul class="menu-list">
       <li class="--set-active-tables-html">
-        <a href="tables.html">
+        <a href="{{route('dashboard')}}">
           <span class="icon"><i class="mdi mdi-table"></i></span>
           <span class="menu-item-label">Academias</span>
         </a>
       </li>
       @auth('guardian')
       <li class="--set-active-forms-html">
-        <a href="forms.html">
+        <a href="{{route('dashboard')}}">
           <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
           <span class="menu-item-label">Matriculas</span>
         </a>

@@ -6,13 +6,13 @@ use App\Contracts\CourseServiceInterface;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class CourseService implements CourseServiceInterface
 {
     public function list(?array $request = null, ?array $with = []): LengthAwarePaginator
     {
         if (count($with) > 0) return Course::with($with)->paginate();
-        
 
         return Course::paginate();
     }
@@ -51,6 +51,15 @@ class CourseService implements CourseServiceInterface
     public function removeStudent(int $academyId): bool
     {
         return true;
+    }
+
+    public function listByColumns(array $columnNames, bool $isPaginated = false): Collection | LengthAwarePaginator
+    {
+        $query = Course::select($columnNames);
+
+        if($isPaginated) return $query->paginate();
+
+        return $query->get();
     }
     
 }

@@ -24,7 +24,7 @@ class StudentService implements StudentServiceInterface
 
     public function create(array $data): Student
     {
-        return Student::create($data);
+        return Student::firstOrCreate($data);
     }
 
     public function update(Student $student, array $data): bool

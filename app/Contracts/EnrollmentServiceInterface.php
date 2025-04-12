@@ -11,4 +11,5 @@ interface EnrollmentServiceInterface
     public function create(array $data): Enrollment;
     public function update(Enrollment $enrollment, array $data): bool;
     public function delete(Enrollment $enrollment): bool;
+    public function enrollStudent(int | string $courseId, array $studentData): bool;
 }
