@@ -3,15 +3,12 @@
 namespace App\Livewire\Enrollment\Form;
 
 use App\Services\CourseService;
-use App\Services\EnrollmentService;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class NewEnrollment extends Component
 {
 
     private CourseService $courseService;
-    private EnrollmentService $enrollmentService;
 
     //course data
     public $courseId = '';
@@ -22,22 +19,13 @@ class NewEnrollment extends Component
     public $academyName = '';  
     public $courseList = null;
 
-    //student data
-    public $firstName = '';
-    public $lastName = '';  
-    public $dateOfBirth = '';
-
     public function __construct()
     {
         $this->courseService = new CourseService(); 
-        $this->enrollmentService = new EnrollmentService(); 
-
     }
     
     public function mount($course)
     {
-        $this->dateOfBirth = Carbon::now()->format('Y-m-d');
-
         if(isset($course)){
             $this->courseId = $course->id;
             $this->courseName = $course->name;
@@ -53,19 +41,6 @@ class NewEnrollment extends Component
     public function render()
     {
         return view('livewire.enrollment.form.new-enrollment');
-    }
-
-    public function enroll()
-    {
-        $this->enrollmentService->enrollStudent( 
-            $this->courseId, 
-            [
-                'first_name' => $this->firstName,
-                'last_name' => $this->lastName,
-                'birth_date' => $this->dateOfBirth,
-                'guardian_id' =>  auth('guardian')?->user()->id,
-            ]
-        );
     }
 
     public function onCourseSelected()

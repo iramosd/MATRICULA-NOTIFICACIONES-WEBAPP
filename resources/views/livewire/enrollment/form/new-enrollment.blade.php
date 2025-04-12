@@ -43,27 +43,29 @@
             </p>
         </header>
         <div class="card-content">
-            <form method="post">
+            <form method="post" action="{{route('enrollments.store')}}">
+                @csrf
+                <input type="hidden" id="course_id" name="course_id" value="{{ $courseId }}">
             <div class="field">
                 <div class="field-body">
                 <div class="field">
                     <label class="text-gray-500" for="first_name">Nombres</label>
                     <div class="control icons-left">
-                    <input class="input" type="text" placeholder="Nombre" id="first_name" wire:model='firstName'>
+                    <input class="input" type="text" placeholder="Nombre" id="first_name" name="first_name">
                     <span class="icon left"><i class="mdi mdi-account"></i></span>
                     </div>
                 </div>
                 <div class="field">
                     <label class="text-gray-500" for="last_name">Apellidos</label>
                     <div class="control icons-left">
-                    <input class="input" type="text" placeholder="Apellido" id="last_name" wire:model='lastName'>
+                    <input class="input" type="text" placeholder="Apellido" id="last_name" name="last_name">
                     <span class="icon left"><i class="mdi mdi-account"></i></span>
                     </div>
                 </div>
                 <div class="field">
                     <label class="text-gray-500" for="birth_date">Fecha de Nacimiento</label>
                     <div class="control icons-left icons-right">
-                    <input class="input" type="date" id="birth_date" wire:model='dateOfBirth'>
+                    <input class="input" type="date" id="birth_date" name="birth_date" value="{{now()->format('Y-m-d')}}">
                     <span class="icon left"><i class="mdi mdi-calendar"></i></span>
                     </div>
                 </div>
@@ -71,7 +73,7 @@
             </div>
             <div class="field grouped">
                 <div class="control">
-                <button type="submit" class="button green" wire:click.prevent='enroll'>
+                <button type="submit" class="button green">
                     Matricular
                 </button>
                 </div>

@@ -8,6 +8,8 @@
       </ul>
     </div>
   </section>
-  
+  @if (session('success'))
+    <div class="notification green text-white">{{ session('success') }}</div>
+  @endif
   <livewire:course-list/>
 @endsection

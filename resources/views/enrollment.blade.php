@@ -7,6 +7,9 @@
         <li>Matrícula</li>
       </ul>
     </div>
+    @if (session('error'))
+    <div class="notification red text-white">{{ session('error') }}</div>
+    @endif
     <livewire:enrollment.form.new-enrollment :course="$course"/>
 </section>
 

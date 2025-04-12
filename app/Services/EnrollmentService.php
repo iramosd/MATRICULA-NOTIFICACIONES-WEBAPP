@@ -47,7 +47,7 @@ class EnrollmentService implements EnrollmentServiceInterface
         return $enrollment->delete();
     }
 
-    public function enrollStudent(int | string $courseId, array $studentData): bool
+    public function enrollStudent(int | string $courseId, array $studentData):  Enrollment | bool
     {
         $enrollment = null;
         $student = (new StudentService)->create($studentData);
@@ -60,6 +60,6 @@ class EnrollmentService implements EnrollmentServiceInterface
                 'status' => EnrollmentStatusEnum::INACTIVE,
             ]);
         
-        return $enrollment instanceof Enrollment;
+        return $enrollment;
     }
 }

@@ -31,7 +31,7 @@ class Login extends Component
             ]);
         } 
 
-        return $this->redirect('/dashboard');
+        return $this->redirectIntended(route('dashboard'));
     }
 
     public function render()
