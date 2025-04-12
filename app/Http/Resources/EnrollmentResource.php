@@ -19,6 +19,7 @@ class EnrollmentResource extends JsonResource
             'student' => new StudentResource($this->whenLoaded('student')),
             'course' => new CourseResource($this->whenLoaded('course')),
             'notes' => $this->notes,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

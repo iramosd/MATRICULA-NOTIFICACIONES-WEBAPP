@@ -20,7 +20,6 @@ Route::middleware(['auth:sanctum'])->prefix('/v1')->as('api.')->group(function (
     Route::apiResource('/academies', AcademyController::class);
     Route::apiResource('/courses', CourseController::class);
     Route::apiResource('/payments', PaymentController::class);
-    Route::apiResource('/courses', CourseController::class);
     Route::apiResource('/communications', CommunicationController::class);
     Route::apiResource('/enrollments', EnrollmentController::class);
 });

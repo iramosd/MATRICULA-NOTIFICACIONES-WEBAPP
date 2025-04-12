@@ -17,8 +17,12 @@ class CourseService implements CourseServiceInterface
         return Course::paginate();
     }
 
-    public function show(Course $course, ?array $with = []): ?Course
+    public function show(Course | string | int $course, ?array $with = []): ?Course
     {
+        if(! $course instanceof Course){
+            $course = Course::find($course);
+        }
+
         if (count($with) > 0) return $course->load($with);
         
         return $course;

@@ -46,59 +46,26 @@
   </div>
   <div class="navbar-menu" id="navbar-menu">
     <div class="navbar-end">
-      <div class="navbar-item dropdown has-divider">
-        <div class="navbar-dropdown">
-          <a href="profile.html" class="navbar-item">
-            <span class="icon"><i class="mdi mdi-account"></i></span>
-            <span>My Profile</span>
-          </a>
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-settings"></i></span>
-            <span>Settings</span>
-          </a>
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-email"></i></span>
-            <span>Messages</span>
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-logout"></i></span>
-            <span>Log Out</span>
-          </a>
-        </div>
-      </div>
       <div class="navbar-item dropdown has-divider has-user-avatar">
+      @auth('guardian')
         <a class="navbar-link">
-          <div class="user-avatar">
-            <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe" class="rounded-full">
-          </div>
-          <div class="is-user-name"><span>John Doe</span></div>
-          <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
+            <div class="user-avatar">
+              <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="{{ Auth::guard('guardian')?->user()->name ?? 'Usuario' }}" class="rounded-full">
+            </div>
+          <div class="is-user-name"><span>{{ Auth::guard('guardian')?->user()->name ?? 'Usuario' }}</span></div>
         </a>
-        <div class="navbar-dropdown">
-          <a href="profile.html" class="navbar-item">
-            <span class="icon"><i class="mdi mdi-account"></i></span>
-            <span>My Profile</span>
-          </a>
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-settings"></i></span>
-            <span>Settings</span>
-          </a>
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-email"></i></span>
-            <span>Messages</span>
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            <span class="icon"><i class="mdi mdi-logout"></i></span>
-            <span>Log Out</span>
-          </a>
-        </div>
+      @else 
+        <a class="navbar-link" href="{{route('login')}}">
+        <div class="is-user-name">Ingresar</div>
+        </a>
+      @endauth
       </div>
-      <a title="Log out" class="navbar-item desktop-icon-only">
+      @auth('guardian')
+      <a title="Salir" class="navbar-item desktop-icon-only" href="{{route('logout')}}">
         <span class="icon"><i class="mdi mdi-logout"></i></span>
-        <span>Log out</span>
+        <span>Salir</span>
       </a>
+      @endauth
     </div>
   </div>
 </nav>
@@ -106,7 +73,7 @@
 <aside class="aside is-placed-left is-expanded">
   <div class="aside-tools">
     <div>
-      Admin <b class="font-black">One</b>
+      Academias y Cursos
     </div>
   </div>
   <div class="menu is-menu-main">
@@ -115,70 +82,25 @@
       <li class="active">
         <a href="index.html">
           <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
-          <span class="menu-item-label">Dashboard</span>
+          <span class="menu-item-label">Cursos</span>
         </a>
       </li>
     </ul>
-    <p class="menu-label">Examples</p>
     <ul class="menu-list">
       <li class="--set-active-tables-html">
         <a href="tables.html">
           <span class="icon"><i class="mdi mdi-table"></i></span>
-          <span class="menu-item-label">Tables</span>
+          <span class="menu-item-label">Academias</span>
         </a>
       </li>
+      @auth('guardian')
       <li class="--set-active-forms-html">
         <a href="forms.html">
           <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
-          <span class="menu-item-label">Forms</span>
+          <span class="menu-item-label">Matriculas</span>
         </a>
       </li>
-      <li class="--set-active-profile-html">
-        <a href="profile.html">
-          <span class="icon"><i class="mdi mdi-account-circle"></i></span>
-          <span class="menu-item-label">Profile</span>
-        </a>
-      </li>
-      <li>
-        <a href="login.html">
-          <span class="icon"><i class="mdi mdi-lock"></i></span>
-          <span class="menu-item-label">Login</span>
-        </a>
-      </li>
-      <li>
-        <a class="dropdown">
-          <span class="icon"><i class="mdi mdi-view-list"></i></span>
-          <span class="menu-item-label">Submenus</span>
-          <span class="icon"><i class="mdi mdi-plus"></i></span>
-        </a>
-        <ul>
-          <li>
-            <a href="#void">
-              <span>Sub-item One</span>
-            </a>
-          </li>
-          <li>
-            <a href="#void">
-              <span>Sub-item Two</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <p class="menu-label">About</p>
-    <ul class="menu-list">
-      <li>
-        <a href="https://justboil.me/tailwind-admin-templates/free-dashboard/" class="has-icon">
-          <span class="icon"><i class="mdi mdi-help-circle"></i></span>
-          <span class="menu-item-label">About</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/justboil/admin-one-tailwind" class="has-icon">
-          <span class="icon"><i class="mdi mdi-github-circle"></i></span>
-          <span class="menu-item-label">GitHub</span>
-        </a>
-      </li>
+      @endauth
     </ul>
   </div>
 </aside>
@@ -187,15 +109,15 @@
     @yield('content')
   </section>
 
-<footer class="footer">
-  <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
-    <div class="flex items-center justify-start space-x-3">
-      <div>
-        © 2025, PayMon
+  <footer class="footer">
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
+      <div class="flex items-center justify-start space-x-3">
+        <div>
+          © 2025, PayMon
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 </div>
 

@@ -24,6 +24,7 @@ class EnrollmentRequest extends FormRequest
         return [
             'student_id' => ['required', 'exists:students,id'],
             'course_id' => ['required', 'exists:courses,id'],
+            'status' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
         ];
     }

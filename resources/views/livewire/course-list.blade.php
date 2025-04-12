@@ -22,7 +22,7 @@
               <p class="text-sm text-gray-500">
                 <span class="font-bold">Modalidad:</span> {{ $course?->modality ?? 'N/D' }}
               </p><br>
-              <a href="#"
+              <a href="{{ route('enrollments.create', ['course_id' => $course->id]) }}"
                  class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white-800 text-sm font-semibold rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
                 Inscribir
               </a>

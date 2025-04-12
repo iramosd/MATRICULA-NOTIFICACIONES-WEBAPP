@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
@@ -20,6 +19,10 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
     Route::post('login', [AuthenticatedSessionController::class, 'store'])
         ->middleware('guest')
         ->name('login');
+
+        Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->middleware('guest')
+        ->name('logout');
 
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
     ->middleware('guest')
