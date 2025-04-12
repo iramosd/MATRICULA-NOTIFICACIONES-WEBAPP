@@ -6,6 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+/admin-one-tailwind-master
 .env
 .env.backup
 .env.production
