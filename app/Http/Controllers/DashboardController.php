@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CourseService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +15,8 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $coursesPaginated = (new CourseService)->list(with: ['academy']);
+
         return view('dashboard');
     }
 }

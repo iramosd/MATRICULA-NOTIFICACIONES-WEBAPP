@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->decimal('cost', total: 12, places: 2);
             $table->string('duration');
+            $table->string('image')->nullable();
+            $table->string('modality')->nullable();
             $table->foreignId('academy_id');
             $table->timestamps();
             $table->softDeletes();

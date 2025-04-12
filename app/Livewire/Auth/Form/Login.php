@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Auth\Form;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class Login extends Component
@@ -18,10 +20,18 @@ class Login extends Component
     {
         $credentials = $this->validate();
 
-        dd($this->email, $this->password);
+        Auth::guard('guardian')->attempt([
+            'email' => $credentials['email'],
+            'password' => $credentials['password'],
+        ]);
 
-        return redirect()->intended('/dashboard');
+        if (!Auth::guard('guardian')->check()) {
+            throw ValidationException::withMessages([
+                'password' => 'The provided credentials do not match our records.',
+            ]);
+        } 
 
+        return $this->redirect('/dashboard');
     }
 
     public function render()

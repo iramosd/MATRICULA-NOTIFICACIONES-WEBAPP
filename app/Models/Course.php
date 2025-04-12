@@ -18,6 +18,8 @@ class Course extends Model
         'description',
         'cost',
         'duration',
+        'image',
+        'modality',
         'academy_id',
     ];
 
