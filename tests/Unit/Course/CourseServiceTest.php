@@ -5,7 +5,7 @@ use App\Models\Course;
 use App\Services\CourseService;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-/*
+
 it('List courses', function () {
     $list = (new CourseService)->list();
 
@@ -45,4 +45,3 @@ it('Delete course information', function () {
 
     $this->assertTrue($isDeleted);
 });
-*/

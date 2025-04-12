@@ -10,7 +10,7 @@ it('List academies', function () {
 
     $this->assertTrue($list instanceof LengthAwarePaginator);
 });
-/*
+
 it('Retrieve academy information', function () {
     $model = (new AcademyService)->show(Academy::factory()->create());
 
@@ -44,4 +44,3 @@ it('Delete academy information', function () {
 
     $this->assertTrue($isDeleted);
 });
-*/
