@@ -1,0 +1,2464 @@
+{
+	"info": {
+		"_postman_id": "70a50092-9793-48d2-bdae-12f40094cf82",
+		"name": "MATRICULAS Y NOTIFICACIONES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13668739",
+		"_collection_link": "https://solar-eclipse-986291.postman.co/workspace/SITES~0fce302f-67c2-4daf-84cd-fdd51da4474f/collection/13668739-70a50092-9793-48d2-bdae-12f40094cf82?action=share&source=collection_link&creator=13668739"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/user",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}register",
+							"host": [
+								"{{base_url}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email Verification Notification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}email/verification-notification",
+							"host": [
+								"{{base_url}}email"
+							],
+							"path": [
+								"verification-notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}forgot-password",
+							"host": [
+								"{{base_url}}forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}reset-password",
+							"host": [
+								"{{base_url}}reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*",
+									"var jsonData = pm.response.json();",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);",
+									"*/"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ramosdumas_ismael@hotmail.com\",\n    \"password\": \"password12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}login",
+							"host": [
+								"{{base_url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}logout",
+							"host": [
+								"{{base_url}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CSRF Cookie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('xsrf-cookie', pm.cookies.get('XSRF-TOKEN'))"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sanctum/csrf-cookie",
+							"host": [
+								"{{base_url}}sanctum"
+							],
+							"path": [
+								"csrf-cookie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Academia",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/academies",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"academies"
+							]
+						},
+						"description": "### Get Academies\n\nThis endpoint makes an HTTP GET request to retrieve a list of academies.\n\n#### Request\n\nThe request does not require a request body. It simply makes a GET request to the specified endpoint.\n\n- `base_url` (string): The base URL of the API.\n    \n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"academies\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\"\n          },\n          \"name\": {\n            \"type\": \"string\"\n          },\n          \"location\": {\n            \"type\": \"string\"\n          },\n          \"courses\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\n ```\n\nThe response will contain an array of academies, where each academy object will have an `id`, `name`, `location`, and a list of `courses`."
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}api/v1/academies",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"academies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:09:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Estella Leffler\",\n            \"description\": \"Voluptate aut vel animi eos voluptates voluptas vel delectus. Recusandae voluptates voluptatibus id rerum numquam ut assumenda. Temporibus explicabo dolores enim unde beatae.\",\n            \"address\": \"26227 Vincent Manors\\nLangoshshire, ND 95934-6529\",\n            \"phone\": \"571.492.9488\",\n            \"email\": \"woodrow92@example.org\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Gene Ryan\",\n            \"description\": \"Minus in laudantium optio. Facilis qui quidem nulla totam nulla. Laboriosam est error sint neque expedita et delectus sit. In sit deleniti maxime qui. Et at esse ullam omnis adipisci.\",\n            \"address\": \"4689 Ruecker Plain\\nWest Demond, NJ 14718\",\n            \"phone\": \"(351) 755-7946\",\n            \"email\": \"jrath@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Prof. Justyn Satterfield I\",\n            \"description\": \"Quidem ut velit consectetur in debitis itaque voluptate harum. Vitae et aut sit dolorum.\",\n            \"address\": \"209 Orville Crossroad\\nKassulkeville, NV 09997-7752\",\n            \"phone\": \"1-848-677-6591\",\n            \"email\": \"uweber@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Mr. Shad Schoen MD\",\n            \"description\": \"Hic quis non aut et vel ea dolor et. Quia consectetur enim commodi nobis molestias tempora. Officia quaerat ut debitis quia. Nemo quas quaerat aut ipsum et qui.\",\n            \"address\": \"8586 Fadel Viaduct Apt. 807\\nSchinnermouth, NE 52807\",\n            \"phone\": \"+16805989775\",\n            \"email\": \"hershel.hyatt@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Jaden Rippin\",\n            \"description\": \"Quasi ducimus praesentium ut quisquam. Voluptatem consequatur sequi aut atque. Est dolorem architecto est unde maiores nostrum sed.\",\n            \"address\": \"63356 Emma Port\\nEast Alvahstad, MT 61424-0986\",\n            \"phone\": \"856-988-1175\",\n            \"email\": \"morar.delpha@example.org\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Ms. Kaycee Beahan Jr.\",\n            \"description\": \"Quasi voluptas dolores ex. Architecto praesentium necessitatibus ut adipisci. Est quo eligendi velit. Distinctio debitis consequatur deserunt dolorem dolore dolore esse nihil.\",\n            \"address\": \"393 Crona Roads\\nMcLaughlinland, KY 85770\",\n            \"phone\": \"(956) 433-8476\",\n            \"email\": \"ozella94@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Prof. Charles Torphy\",\n            \"description\": \"Voluptas in sit est natus rerum fuga. Vero facilis nobis et. Nulla mollitia corrupti soluta. Temporibus facilis quae iure est accusantium voluptatem.\",\n            \"address\": \"84043 Mattie Circle\\nHailieshire, SD 22802\",\n            \"phone\": \"+1-662-214-7456\",\n            \"email\": \"oberge@example.net\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Elinor Keebler MD\",\n            \"description\": \"Ea et qui magnam perspiciatis rem animi et. Dolorum molestiae atque repellendus nam. Molestias quo vero velit quis blanditiis laudantium fuga. Dolor aliquid facilis atque quo et voluptas.\",\n            \"address\": \"63067 Ebony Row\\nPort Krystina, AL 28693-3217\",\n            \"phone\": \"+1-571-845-4290\",\n            \"email\": \"colt.aufderhar@example.net\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Miss Rubie Bode PhD\",\n            \"description\": \"Veritatis consectetur molestiae quo quia fugiat et. Ut porro ut voluptatum. Voluptatem animi doloremque impedit ipsum enim est. Eos dolor quam vitae incidunt quis.\",\n            \"address\": \"19106 Hoeger Extension Apt. 896\\nSouth Gilbertoport, WA 66930\",\n            \"phone\": \"+1-832-502-8429\",\n            \"email\": \"mayer.lucinda@example.org\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Ms. Novella Durgan DVM\",\n            \"description\": \"Totam cum dolor eaque deleniti voluptas omnis quia itaque. Fuga tenetur ea voluptas minus quibusdam. Qui voluptates et ut vitae voluptatibus adipisci fuga.\",\n            \"address\": \"7660 Annie Road Apt. 101\\nLake Alisaberg, NV 36324-2981\",\n            \"phone\": \"+1 (260) 330-4840\",\n            \"email\": \"raul72@example.org\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Tyreek Orn III\",\n            \"description\": \"Beatae aut quasi voluptas voluptatem itaque. Odio facere vel consequatur quos ex odit et velit. Officia ut ab animi et consectetur. Delectus aliquam officiis voluptatem et.\",\n            \"address\": \"546 Kihn Trail\\nWest Keirastad, WA 20085\",\n            \"phone\": \"(301) 653-4263\",\n            \"email\": \"monserrat29@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Prof. Ayana McKenzie V\",\n            \"description\": \"Enim ut id qui voluptatem corporis tenetur. Et voluptatem omnis aut aut repellendus sapiente iste. Libero ea totam similique. Accusantium est unde pariatur laboriosam. Rem qui et eveniet cum nisi.\",\n            \"address\": \"4576 Raoul Ways Apt. 700\\nJeffreyland, ND 59099\",\n            \"phone\": \"786.367.5472\",\n            \"email\": \"carrie.schumm@example.net\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Ms. Lenore Wiegand I\",\n            \"description\": \"Laudantium dicta inventore quisquam commodi nemo. Hic quia quia nulla corrupti quisquam. Quia assumenda dolorem totam nihil possimus vel.\",\n            \"address\": \"639 Hoeger Squares Suite 423\\nLake Donatoville, CO 49653-5580\",\n            \"phone\": \"+1-407-864-6276\",\n            \"email\": \"vschmeler@example.net\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Adell Denesik\",\n            \"description\": \"Blanditiis qui eius error atque. Tempora non fuga minima tempore at nam voluptate saepe. A repellendus quam nulla soluta dolorum distinctio voluptatum. Sapiente aut enim sed eligendi beatae.\",\n            \"address\": \"4356 Antoinette Summit Apt. 598\\nArianefort, ME 81909-2018\",\n            \"phone\": \"463.758.5968\",\n            \"email\": \"frussel@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Micheal Bayer\",\n            \"description\": \"Non natus est sunt fuga asperiores molestiae. Et ea ab vitae iusto facere eveniet.\",\n            \"address\": \"817 Mayert Path\\nWest Hermann, NH 82928-4632\",\n            \"phone\": \"269.458.5356\",\n            \"email\": \"elvis.hackett@example.com\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/academies?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/academies?page=9\",\n        \"prev\": null,\n        \"next\": \"http://localhost:8000/api/v1/academies?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 9,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=4\",\n                \"label\": \"4\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=5\",\n                \"label\": \"5\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=6\",\n                \"label\": \"6\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=7\",\n                \"label\": \"7\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=8\",\n                \"label\": \"8\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=9\",\n                \"label\": \"9\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/academies?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/academies\",\n        \"per_page\": 15,\n        \"to\": 15,\n        \"total\": 125\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/v1/academies/127",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"academies",
+								"127"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/academies/127",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"academies",
+										"127"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:10:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Academy] 127\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php\",\n    \"line\": 639,\n    \"trace\": [\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php\",\n            \"line\": 587,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 213,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php\",\n            \"line\": 63,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Auth\\\\Middleware\\\\Authenticate\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 25,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 169,\n            \"function\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\{closure}\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 24,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 807,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 786,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 750,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 739,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 200,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 169,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php\",\n            \"line\": 19,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Livewire\\\\Features\\\\SupportDisablingBackButtonCache\\\\DisableBackButtonCacheMiddleware\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php\",\n            \"line\": 51,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php\",\n            \"line\": 109,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php\",\n            \"line\": 61,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php\",\n            \"line\": 58,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php\",\n            \"line\": 22,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php\",\n            \"line\": 26,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePathEncoding\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 175,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 144,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php\",\n            \"line\": 1219,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/public/index.php\",\n            \"line\": 20,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php\",\n            \"line\": 23,\n            \"function\": \"require_once\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"American School\",\r\n    \"address\": \"Managua, Nicaragua\",\r\n    \"email\": \"iramos@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/academies/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"academies",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"American School\",\r\n    \"address\": \"Managua, Nicaragua\",\r\n    \"email\": \"iramos@mail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/academies/",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"academies",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:10:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 126,\n        \"name\": \"American School\",\n        \"description\": null,\n        \"address\": \"Managua, Nicaragua\",\n        \"phone\": null,\n        \"email\": \"iramos@mail.com\",\n        \"created_at\": \"2025-04-12T16:10:58.000000Z\",\n        \"updated_at\": \"2025-04-12T16:10:58.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"American College\",\r\n    \"address\": \"Rivas, Nicaragua\",\r\n    \"email\": \"iramos@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/academies/127",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"academies",
+								"127"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"American College\",\r\n    \"address\": \"Rivas, Nicaragua\",\r\n    \"email\": \"iramos@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/academies/12",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"academies",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:11:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 12,\n        \"name\": \"American College\",\n        \"description\": \"Enim ut id qui voluptatem corporis tenetur. Et voluptatem omnis aut aut repellendus sapiente iste. Libero ea totam similique. Accusantium est unde pariatur laboriosam. Rem qui et eveniet cum nisi.\",\n        \"address\": \"Rivas, Nicaragua\",\n        \"phone\": \"786.367.5472\",\n        \"email\": \"iramos@gmail.com\",\n        \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n        \"updated_at\": \"2025-04-12T16:11:21.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/academies/101",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"academies",
+								"101"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/courses",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}api/v1/courses",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:12:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Jackson Braun\",\n            \"description\": \"Sed amet ullam recusandae. Ea facere nostrum qui minus. Dolores officiis quod saepe. Laboriosam id qui possimus quo quas et doloremque.\",\n            \"cost\": \"775.87\",\n            \"duration\": \"19\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 11,\n                \"name\": \"Tyreek Orn III\",\n                \"description\": \"Beatae aut quasi voluptas voluptatem itaque. Odio facere vel consequatur quos ex odit et velit. Officia ut ab animi et consectetur. Delectus aliquam officiis voluptatem et.\",\n                \"address\": \"546 Kihn Trail\\nWest Keirastad, WA 20085\",\n                \"phone\": \"(301) 653-4263\",\n                \"email\": \"monserrat29@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Dr. Maia Lesch III\",\n            \"description\": \"Dolores facere quis expedita cumque nam eius. Aut sunt dolorem fugit ipsam quo. Possimus tempore enim commodi temporibus impedit delectus.\",\n            \"cost\": \"506.49\",\n            \"duration\": \"27\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 12,\n                \"name\": \"American College\",\n                \"description\": \"Enim ut id qui voluptatem corporis tenetur. Et voluptatem omnis aut aut repellendus sapiente iste. Libero ea totam similique. Accusantium est unde pariatur laboriosam. Rem qui et eveniet cum nisi.\",\n                \"address\": \"Rivas, Nicaragua\",\n                \"phone\": \"786.367.5472\",\n                \"email\": \"iramos@gmail.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T16:11:21.000000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Annabelle Davis\",\n            \"description\": \"Reprehenderit minus hic voluptatem ab perferendis. Quibusdam accusantium dolor aut aliquid odio autem. A ducimus voluptates a error corporis.\",\n            \"cost\": \"868.65\",\n            \"duration\": \"16\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 13,\n                \"name\": \"Ms. Lenore Wiegand I\",\n                \"description\": \"Laudantium dicta inventore quisquam commodi nemo. Hic quia quia nulla corrupti quisquam. Quia assumenda dolorem totam nihil possimus vel.\",\n                \"address\": \"639 Hoeger Squares Suite 423\\nLake Donatoville, CO 49653-5580\",\n                \"phone\": \"+1-407-864-6276\",\n                \"email\": \"vschmeler@example.net\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Alycia Parker\",\n            \"description\": \"Minus voluptatem incidunt et nostrum. Doloremque sequi delectus sunt placeat. Ut rerum est tempora sint non.\",\n            \"cost\": \"845.41\",\n            \"duration\": \"19\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 14,\n                \"name\": \"Adell Denesik\",\n                \"description\": \"Blanditiis qui eius error atque. Tempora non fuga minima tempore at nam voluptate saepe. A repellendus quam nulla soluta dolorum distinctio voluptatum. Sapiente aut enim sed eligendi beatae.\",\n                \"address\": \"4356 Antoinette Summit Apt. 598\\nArianefort, ME 81909-2018\",\n                \"phone\": \"463.758.5968\",\n                \"email\": \"frussel@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Hassan Ebert\",\n            \"description\": \"Nihil unde ratione voluptas hic et ut suscipit. Error illo in velit ut a. Corporis consectetur aut facilis pariatur natus. Aut quia est quisquam voluptatem.\",\n            \"cost\": \"196.27\",\n            \"duration\": \"37\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 15,\n                \"name\": \"Micheal Bayer\",\n                \"description\": \"Non natus est sunt fuga asperiores molestiae. Et ea ab vitae iusto facere eveniet.\",\n                \"address\": \"817 Mayert Path\\nWest Hermann, NH 82928-4632\",\n                \"phone\": \"269.458.5356\",\n                \"email\": \"elvis.hackett@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Prof. Alize Hahn\",\n            \"description\": \"Facilis quia dicta temporibus necessitatibus accusamus. Nemo et dolorum aut voluptatem numquam. Quas ex harum optio aut repellat minima non ullam.\",\n            \"cost\": \"538.22\",\n            \"duration\": \"32\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 16,\n                \"name\": \"Dr. Adam Schiller\",\n                \"description\": \"Excepturi laborum nostrum ipsa harum facilis omnis. Nihil quaerat nihil qui error. Minus dolores ipsa est ab. Iure veniam iusto sit ex.\",\n                \"address\": \"67135 Dibbert Point\\nSouth Hilton, NC 71528\",\n                \"phone\": \"+1-845-869-6731\",\n                \"email\": \"gottlieb.reece@example.org\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Prof. Sierra Terry PhD\",\n            \"description\": \"Veritatis qui ea qui. Soluta dolorum ex corporis voluptatem quidem. Distinctio illo nam et quae sequi quo. Possimus hic cupiditate non ducimus sint.\",\n            \"cost\": \"128.17\",\n            \"duration\": \"38\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 17,\n                \"name\": \"Vallie Wintheiser DDS\",\n                \"description\": \"Quod mollitia ut dolorum doloribus. Quo corporis autem repellat soluta. Sunt sit enim possimus nobis quia temporibus. Non laudantium est deserunt sint rerum quo.\",\n                \"address\": \"74831 Price Tunnel Apt. 327\\nVonton, DC 24674-8920\",\n                \"phone\": \"1-646-332-2440\",\n                \"email\": \"ned.bechtelar@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Mrs. Jaunita Runolfsson II\",\n            \"description\": \"Laudantium neque in rerum. Vel incidunt sunt consectetur a libero est voluptas. Aut sit aspernatur similique. Iusto illum consequuntur reprehenderit.\",\n            \"cost\": \"775.88\",\n            \"duration\": \"29\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 18,\n                \"name\": \"Dereck Hoppe\",\n                \"description\": \"Dolor nisi inventore tempora autem. Architecto sit consequuntur sit consequatur illo ullam.\",\n                \"address\": \"3752 Kenyatta Hollow\\nLake Joesphfurt, LA 69267\",\n                \"phone\": \"(270) 800-0552\",\n                \"email\": \"pierce96@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Dr. Retta Grant I\",\n            \"description\": \"Beatae eaque distinctio quia occaecati sed asperiores reiciendis. Nostrum est dignissimos ab natus natus. Asperiores quidem voluptates harum dignissimos ut soluta esse.\",\n            \"cost\": \"313.50\",\n            \"duration\": \"21\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 19,\n                \"name\": \"Dr. Breana Casper II\",\n                \"description\": \"Ducimus officiis eligendi quam enim. Dolores cum quia eius quae. Saepe et est id ducimus odio corrupti. Et cum quaerat est non debitis ab in. Corrupti harum enim aliquam et.\",\n                \"address\": \"6526 Marianna Valleys\\nHillsland, MT 30161-5232\",\n                \"phone\": \"1-360-513-8275\",\n                \"email\": \"wuckert.aubrey@example.net\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Robert Wolf\",\n            \"description\": \"Placeat totam quam aut. Perferendis laboriosam fugiat explicabo nostrum facere iure neque. Ea sed consequuntur rem aspernatur quisquam. Sapiente quaerat dignissimos saepe.\",\n            \"cost\": \"313.97\",\n            \"duration\": \"33\",\n            \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:54.000000Z\",\n            \"academy\": {\n                \"id\": 20,\n                \"name\": \"Kelsi Rice\",\n                \"description\": \"Et quia numquam est assumenda et iste. Eligendi ea ut nulla et maxime perferendis minus. Culpa ut praesentium dolor magnam. Consequatur sint quia dolores nobis itaque blanditiis.\",\n                \"address\": \"857 Consuelo Park\\nNew Willow, NY 11452-3161\",\n                \"phone\": \"+1.716.478.9220\",\n                \"email\": \"okuneva.janet@example.com\",\n                \"created_at\": \"2025-04-12T13:56:54.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:54.000000Z\"\n            }\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Euna McDermott\",\n            \"description\": \"Voluptas aliquid nemo minus quia ut sit. Quis nihil voluptas consequatur sed nulla. Ut accusantium dolorem aut dolorem.\",\n            \"cost\": \"389.06\",\n            \"duration\": \"44\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"academy\": {\n                \"id\": 21,\n                \"name\": \"Eino Sauer\",\n                \"description\": \"Quidem harum accusamus dolorem dicta. Voluptatem harum totam similique. At et ab et qui debitis nostrum perspiciatis. Laboriosam ad et quasi. Necessitatibus error molestiae amet quod.\",\n                \"address\": \"692 Karelle Corner\\nEast Armandfurt, OR 02061-8324\",\n                \"phone\": \"+1-323-830-1970\",\n                \"email\": \"rick.batz@example.net\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            }\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Ms. Anjali Schuster\",\n            \"description\": \"Tenetur tempore explicabo omnis non voluptatem. Quisquam eaque minus in. Aut et culpa adipisci ut enim.\",\n            \"cost\": \"334.68\",\n            \"duration\": \"1\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"academy\": {\n                \"id\": 22,\n                \"name\": \"Jammie Kilback MD\",\n                \"description\": \"Consequuntur blanditiis autem quod voluptatem dolorem facere. Tempore sit qui dolorem rem quo. Eos ut assumenda est nesciunt a tempore autem.\",\n                \"address\": \"213 Emard Light Suite 171\\nPort Samson, OK 56899\",\n                \"phone\": \"938.898.1929\",\n                \"email\": \"harvey.bernita@example.com\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            }\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Dr. Isac Goldner DVM\",\n            \"description\": \"Debitis iure voluptatibus nobis commodi consequatur fugit totam eum. Recusandae reprehenderit aliquid nulla vitae magnam. Nisi earum facilis tempora asperiores eum. Est sit officia itaque qui aut.\",\n            \"cost\": \"692.02\",\n            \"duration\": \"14\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"academy\": {\n                \"id\": 23,\n                \"name\": \"Conor Goodwin I\",\n                \"description\": \"Dolor sit quo voluptatem quisquam. Omnis nulla dolores quod dolorem quisquam quis rerum. Illum illum corrupti reprehenderit tempore sit doloremque. Sit deleniti quasi quam suscipit dolore officiis.\",\n                \"address\": \"675 Mante River\\nClemensberg, TN 97525-3870\",\n                \"phone\": \"1-734-914-7342\",\n                \"email\": \"leonie.corkery@example.net\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            }\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Albert VonRueden Sr.\",\n            \"description\": \"Quisquam alias provident adipisci qui. Voluptatem unde nesciunt ratione corporis dolorem nesciunt occaecati. Quasi officia voluptatem quia. Excepturi iure officia vitae sunt autem voluptatem magnam.\",\n            \"cost\": \"354.68\",\n            \"duration\": \"22\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"academy\": {\n                \"id\": 24,\n                \"name\": \"Rhianna Sipes\",\n                \"description\": \"Perspiciatis at nihil rem nihil et nihil harum. Et odio et adipisci ad. Natus qui error consectetur reiciendis qui.\",\n                \"address\": \"925 Nicolette Village Apt. 434\\nRoweberg, MD 00232\",\n                \"phone\": \"567.721.0717\",\n                \"email\": \"bernadine42@example.com\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            }\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Zena Schuster\",\n            \"description\": \"Est omnis vero sed ut nulla natus. Molestias inventore laborum hic qui hic. Occaecati expedita ullam sit officia.\",\n            \"cost\": \"281.54\",\n            \"duration\": \"3\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"academy\": {\n                \"id\": 25,\n                \"name\": \"Darryl Rippin\",\n                \"description\": \"Vel odio aliquam nisi omnis et aut sit. Maiores blanditiis quos voluptatem. Commodi est harum similique sed velit voluptates. Earum voluptas culpa in.\",\n                \"address\": \"509 Mosciski Avenue\\nNew Oscar, MS 30153-1869\",\n                \"phone\": \"1-508-884-3196\",\n                \"email\": \"uriel06@example.org\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            }\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/courses?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/courses?page=8\",\n        \"prev\": null,\n        \"next\": \"http://localhost:8000/api/v1/courses?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 8,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=4\",\n                \"label\": \"4\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=5\",\n                \"label\": \"5\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=6\",\n                \"label\": \"6\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=7\",\n                \"label\": \"7\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=8\",\n                \"label\": \"8\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/courses?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/courses\",\n        \"per_page\": 15,\n        \"to\": 15,\n        \"total\": 115\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/v1/courses/117",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"courses",
+								"117"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/courses/117",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"courses",
+										"117"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:12:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Course] 117\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php\",\n    \"line\": 639,\n    \"trace\": [\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php\",\n            \"line\": 587,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 213,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php\",\n            \"line\": 63,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Auth\\\\Middleware\\\\Authenticate\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 25,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 169,\n            \"function\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\{closure}\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 24,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 807,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 786,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 750,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 739,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 200,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 169,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php\",\n            \"line\": 19,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Livewire\\\\Features\\\\SupportDisablingBackButtonCache\\\\DisableBackButtonCacheMiddleware\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php\",\n            \"line\": 51,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php\",\n            \"line\": 109,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php\",\n            \"line\": 61,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php\",\n            \"line\": 58,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php\",\n            \"line\": 22,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php\",\n            \"line\": 26,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 208,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePathEncoding\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 126,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 175,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 144,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php\",\n            \"line\": 1219,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/public/index.php\",\n            \"line\": 20,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php\",\n            \"line\": 23,\n            \"function\": \"require_once\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Introducción a la programación II\",\r\n    \"description\": \"Fundamentos y lógica de programación\",\r\n    \"cost\": 153,\r\n    \"duration\": 12,\r\n    \"academy_id\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/courses/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"courses",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Introducción a la programación II\",\r\n    \"description\": \"Fundamentos y lógica de programación\",\r\n    \"cost\": 153,\r\n    \"duration\": 12,\r\n    \"academy_id\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/courses/",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"courses",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:12:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 116,\n        \"name\": \"Introducción a la programación II\",\n        \"description\": \"Fundamentos y lógica de programación\",\n        \"cost\": 153,\n        \"duration\": 12,\n        \"created_at\": \"2025-04-12T16:12:27.000000Z\",\n        \"updated_at\": \"2025-04-12T16:12:27.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Introducción a la programación I\",\r\n    \"description\": \"Fundamentos y lógica de programación con Python\",\r\n    \"cost\": 200,\r\n    \"duration\": 18,\r\n    \"academy_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/courses/18",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"courses",
+								"18"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Introducción a la programación I\",\r\n    \"description\": \"Fundamentos y lógica de programación con Python\",\r\n    \"cost\": 200,\r\n    \"duration\": 18,\r\n    \"academy_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/courses/18",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"courses",
+										"18"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:12:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 18,\n        \"name\": \"Introducción a la programación I\",\n        \"description\": \"Fundamentos y lógica de programación con Python\",\n        \"cost\": 200,\n        \"duration\": 18,\n        \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n        \"updated_at\": \"2025-04-12T16:12:48.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/courses/116",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"courses",
+								"116"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matrículas",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/enrollments",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"enrollments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}api/v1/enrollments",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"enrollments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:13:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"student\": {\n                \"id\": 21,\n                \"first_name\": \"Cierra\",\n                \"last_name\": \"Haag\",\n                \"birth_date\": \"2017-02-24\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 11,\n                \"name\": \"Euna McDermott\",\n                \"description\": \"Voluptas aliquid nemo minus quia ut sit. Quis nihil voluptas consequatur sed nulla. Ut accusantium dolorem aut dolorem.\",\n                \"cost\": \"389.06\",\n                \"duration\": \"44\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Molestias modi ex possimus earum voluptas.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"student\": {\n                \"id\": 22,\n                \"first_name\": \"Ardella\",\n                \"last_name\": \"Williamson\",\n                \"birth_date\": \"1997-09-17\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 12,\n                \"name\": \"Ms. Anjali Schuster\",\n                \"description\": \"Tenetur tempore explicabo omnis non voluptatem. Quisquam eaque minus in. Aut et culpa adipisci ut enim.\",\n                \"cost\": \"334.68\",\n                \"duration\": \"1\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Qui asperiores asperiores sit.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"student\": {\n                \"id\": 23,\n                \"first_name\": \"Nina\",\n                \"last_name\": \"Pagac\",\n                \"birth_date\": \"2013-08-27\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 13,\n                \"name\": \"Dr. Isac Goldner DVM\",\n                \"description\": \"Debitis iure voluptatibus nobis commodi consequatur fugit totam eum. Recusandae reprehenderit aliquid nulla vitae magnam. Nisi earum facilis tempora asperiores eum. Est sit officia itaque qui aut.\",\n                \"cost\": \"692.02\",\n                \"duration\": \"14\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Nemo iusto et exercitationem in quis ipsam animi unde.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"student\": {\n                \"id\": 24,\n                \"first_name\": \"Braxton\",\n                \"last_name\": \"O'Keefe\",\n                \"birth_date\": \"1974-11-13\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 14,\n                \"name\": \"Albert VonRueden Sr.\",\n                \"description\": \"Quisquam alias provident adipisci qui. Voluptatem unde nesciunt ratione corporis dolorem nesciunt occaecati. Quasi officia voluptatem quia. Excepturi iure officia vitae sunt autem voluptatem magnam.\",\n                \"cost\": \"354.68\",\n                \"duration\": \"22\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Illum perspiciatis rerum itaque omnis.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"student\": {\n                \"id\": 25,\n                \"first_name\": \"Ozella\",\n                \"last_name\": \"Mante\",\n                \"birth_date\": \"1990-06-26\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 15,\n                \"name\": \"Zena Schuster\",\n                \"description\": \"Est omnis vero sed ut nulla natus. Molestias inventore laborum hic qui hic. Occaecati expedita ullam sit officia.\",\n                \"cost\": \"281.54\",\n                \"duration\": \"3\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Nostrum rerum aut in dolores aliquam reiciendis.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"student\": {\n                \"id\": 26,\n                \"first_name\": \"Albin\",\n                \"last_name\": \"Hyatt\",\n                \"birth_date\": \"1992-07-06\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 16,\n                \"name\": \"Mrs. Luella Kohler\",\n                \"description\": \"Itaque impedit doloribus a similique accusantium molestias dolores. Maiores placeat distinctio officiis iste velit. Id nulla voluptatem blanditiis est accusamus.\",\n                \"cost\": \"494.14\",\n                \"duration\": \"21\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Molestias et et est nihil.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"student\": {\n                \"id\": 27,\n                \"first_name\": \"Quinton\",\n                \"last_name\": \"Mitchell\",\n                \"birth_date\": \"2001-12-23\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 17,\n                \"name\": \"Ms. Christelle Stanton Jr.\",\n                \"description\": \"Dignissimos aliquam quibusdam unde quaerat voluptatem expedita libero. Voluptas saepe et ut. Et et nesciunt aut non.\",\n                \"cost\": \"792.63\",\n                \"duration\": \"42\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Alias veritatis magnam et dolorum culpa.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"student\": {\n                \"id\": 28,\n                \"first_name\": \"Shaylee\",\n                \"last_name\": \"Grimes\",\n                \"birth_date\": \"1989-05-15\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 18,\n                \"name\": \"Introducción a la programación I\",\n                \"description\": \"Fundamentos y lógica de programación con Python\",\n                \"cost\": \"200.00\",\n                \"duration\": \"18\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T16:12:48.000000Z\"\n            },\n            \"notes\": \"Voluptas unde enim vitae alias et dolorem ut.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"student\": {\n                \"id\": 29,\n                \"first_name\": \"Deron\",\n                \"last_name\": \"Welch\",\n                \"birth_date\": \"2008-01-08\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 19,\n                \"name\": \"Faye Yundt DVM\",\n                \"description\": \"Velit iure ipsam fugiat esse accusamus omnis. Animi et non qui doloremque laudantium ullam voluptates. Omnis quod aliquam et omnis. Qui qui suscipit sequi.\",\n                \"cost\": \"121.43\",\n                \"duration\": \"6\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Quos est numquam culpa voluptatem.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"student\": {\n                \"id\": 30,\n                \"first_name\": \"Raphael\",\n                \"last_name\": \"Corwin\",\n                \"birth_date\": \"1994-10-26\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 20,\n                \"name\": \"Laurel Schimmel\",\n                \"description\": \"Aliquam dolorum accusamus ex ratione. Maxime ut consequatur in eligendi beatae. Labore vel commodi amet nulla reiciendis. Iste nam libero harum nulla.\",\n                \"cost\": \"755.63\",\n                \"duration\": \"16\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Veniam voluptas qui minus minus.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 11,\n            \"student\": {\n                \"id\": 31,\n                \"first_name\": \"Estevan\",\n                \"last_name\": \"Spinka\",\n                \"birth_date\": \"1996-04-27\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 21,\n                \"name\": \"Kirk Greenfelder\",\n                \"description\": \"Dolor quo veniam autem voluptatem culpa saepe sunt culpa. Aliquam veritatis in nemo tempore temporibus minus. Neque aliquam sint ut.\",\n                \"cost\": \"811.98\",\n                \"duration\": \"22\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Et fugiat molestiae sequi libero deserunt.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 12,\n            \"student\": {\n                \"id\": 32,\n                \"first_name\": \"Frederic\",\n                \"last_name\": \"McKenzie\",\n                \"birth_date\": \"2003-06-07\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 22,\n                \"name\": \"Jaiden Pfeffer\",\n                \"description\": \"Rem ut unde ut nisi nam aliquam itaque. Et itaque qui quia dolore. Nesciunt eos nihil accusantium nesciunt.\",\n                \"cost\": \"872.02\",\n                \"duration\": \"46\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Atque quibusdam blanditiis aut ipsam.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 13,\n            \"student\": {\n                \"id\": 33,\n                \"first_name\": \"Gina\",\n                \"last_name\": \"Barton\",\n                \"birth_date\": \"1972-01-26\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 23,\n                \"name\": \"Elyssa O'Keefe\",\n                \"description\": \"Sit sit optio optio saepe ut. Totam non voluptatem voluptas autem minus. Beatae sunt rerum eveniet incidunt occaecati rerum et.\",\n                \"cost\": \"342.35\",\n                \"duration\": \"31\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Doloribus quas magni architecto odit.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 14,\n            \"student\": {\n                \"id\": 34,\n                \"first_name\": \"Ocie\",\n                \"last_name\": \"Olson\",\n                \"birth_date\": \"2005-05-26\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 24,\n                \"name\": \"Emile Gusikowski\",\n                \"description\": \"Nostrum fugit ea perspiciatis voluptatem sed. Qui dicta cumque sit et qui iste. Quia ea et ut. Voluptas qui nobis accusamus voluptatem magnam et.\",\n                \"cost\": \"630.30\",\n                \"duration\": \"8\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Omnis quos ipsum corrupti tenetur expedita.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        },\n        {\n            \"id\": 15,\n            \"student\": {\n                \"id\": 35,\n                \"first_name\": \"Colin\",\n                \"last_name\": \"Mertz\",\n                \"birth_date\": \"1972-11-24\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"course\": {\n                \"id\": 25,\n                \"name\": \"Misty Romaguera\",\n                \"description\": \"Aut rerum dolorem sequi minus dignissimos. Fuga est omnis fugit fuga debitis assumenda vero. Magni mollitia voluptatum quis.\",\n                \"cost\": \"505.48\",\n                \"duration\": \"33\",\n                \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n            },\n            \"notes\": \"Et sequi quia possimus.\",\n            \"status\": \"inactivo\",\n            \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/enrollments?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/enrollments?page=7\",\n        \"prev\": null,\n        \"next\": \"http://localhost:8000/api/v1/enrollments?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 7,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=4\",\n                \"label\": \"4\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=5\",\n                \"label\": \"5\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=6\",\n                \"label\": \"6\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=7\",\n                \"label\": \"7\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/enrollments?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/enrollments\",\n        \"per_page\": 15,\n        \"to\": 15,\n        \"total\": 95\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/v1/enrollments/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"enrollments",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/enrollments/12",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"enrollments",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:13:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 12,\n        \"student\": {\n            \"id\": 32,\n            \"first_name\": \"Frederic\",\n            \"last_name\": \"McKenzie\",\n            \"birth_date\": \"2003-06-07\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n        },\n        \"course\": {\n            \"id\": 22,\n            \"name\": \"Jaiden Pfeffer\",\n            \"description\": \"Rem ut unde ut nisi nam aliquam itaque. Et itaque qui quia dolore. Nesciunt eos nihil accusantium nesciunt.\",\n            \"cost\": \"872.02\",\n            \"duration\": \"46\",\n            \"created_at\": \"2025-04-12T13:56:55.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:55.000000Z\"\n        },\n        \"notes\": \"Atque quibusdam blanditiis aut ipsam.\",\n        \"status\": \"inactivo\",\n        \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n        \"updated_at\": \"2025-04-12T13:56:57.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student_id\": 12,\r\n    \"course_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/enrollments/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"enrollments",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"student_id\": 12,\r\n    \"course_id\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/enrollments/",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"enrollments",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:13:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 96,\n        \"notes\": null,\n        \"status\": null,\n        \"created_at\": \"2025-04-12T16:13:43.000000Z\",\n        \"updated_at\": \"2025-04-12T16:13:43.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Comunicado de prueba\",\r\n    \"message\": \"Aviso de reunión de padres de familia\",\r\n    \"sent_date\": \"2025-05-05\",\r\n    \"communicable_id\": 2,\r\n    \"communicable_type\": \"group\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/enrollments/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"enrollments",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"student_id\": 12,\r\n    \"course_id\": 3,\r\n    \"notes\": \"Pendiente de reunión\",\r\n    \"status\": \"activo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/enrollments/12",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"enrollments",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:16:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 12,\n        \"notes\": \"Pendiente de reunión\",\n        \"status\": \"activo\",\n        \"created_at\": \"2025-04-12T13:56:57.000000Z\",\n        \"updated_at\": \"2025-04-12T16:16:27.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/enrollments/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"enrollments",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/payments",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}api/v1/payments",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"payments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:17:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"method\": \"transferencia\",\n            \"amount\": \"658.93\",\n            \"payment_date\": \"1986-08-25T00:00:00.000000Z\",\n            \"enrollment_id\": 81,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 2,\n            \"method\": \"transferencia\",\n            \"amount\": \"193.52\",\n            \"payment_date\": \"2002-04-21T00:00:00.000000Z\",\n            \"enrollment_id\": 82,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 3,\n            \"method\": \"efectivo\",\n            \"amount\": \"260.61\",\n            \"payment_date\": \"1988-04-12T00:00:00.000000Z\",\n            \"enrollment_id\": 83,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 4,\n            \"method\": \"efectivo\",\n            \"amount\": \"593.80\",\n            \"payment_date\": \"2009-03-02T00:00:00.000000Z\",\n            \"enrollment_id\": 84,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 5,\n            \"method\": \"transferencia\",\n            \"amount\": \"210.65\",\n            \"payment_date\": \"2015-07-21T00:00:00.000000Z\",\n            \"enrollment_id\": 85,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 6,\n            \"method\": \"efectivo\",\n            \"amount\": \"528.83\",\n            \"payment_date\": \"2013-02-21T00:00:00.000000Z\",\n            \"enrollment_id\": 86,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 7,\n            \"method\": \"transferencia\",\n            \"amount\": \"539.30\",\n            \"payment_date\": \"2007-09-10T00:00:00.000000Z\",\n            \"enrollment_id\": 87,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 8,\n            \"method\": \"efectivo\",\n            \"amount\": \"693.61\",\n            \"payment_date\": \"2006-11-19T00:00:00.000000Z\",\n            \"enrollment_id\": 88,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 9,\n            \"method\": \"efectivo\",\n            \"amount\": \"284.70\",\n            \"payment_date\": \"1988-08-25T00:00:00.000000Z\",\n            \"enrollment_id\": 89,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 10,\n            \"method\": \"transferencia\",\n            \"amount\": \"932.11\",\n            \"payment_date\": \"1999-11-02T00:00:00.000000Z\",\n            \"enrollment_id\": 90,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 11,\n            \"method\": \"efectivo\",\n            \"amount\": \"499.61\",\n            \"payment_date\": \"2014-11-14T00:00:00.000000Z\",\n            \"enrollment_id\": 91,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 12,\n            \"method\": \"transferencia\",\n            \"amount\": \"226.79\",\n            \"payment_date\": \"2017-08-27T00:00:00.000000Z\",\n            \"enrollment_id\": 92,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 13,\n            \"method\": \"efectivo\",\n            \"amount\": \"237.40\",\n            \"payment_date\": \"1993-08-31T00:00:00.000000Z\",\n            \"enrollment_id\": 93,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 14,\n            \"method\": \"efectivo\",\n            \"amount\": \"861.05\",\n            \"payment_date\": \"2018-11-06T00:00:00.000000Z\",\n            \"enrollment_id\": 94,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 15,\n            \"method\": \"transferencia\",\n            \"amount\": \"245.25\",\n            \"payment_date\": \"1974-06-12T00:00:00.000000Z\",\n            \"enrollment_id\": 95,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/payments?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/payments?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/payments?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/payments\",\n        \"per_page\": 15,\n        \"to\": 15,\n        \"total\": 15\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/payments/12",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"payments",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:17:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 12,\n        \"method\": \"transferencia\",\n        \"amount\": \"226.79\",\n        \"payment_date\": \"2017-08-27T00:00:00.000000Z\",\n        \"enrollment_id\": 92,\n        \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n        \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"method\": \"transferencia2\",\r\n    \"amount\": 120,\r\n    \"payment_date\": \"2025-04-12\",\r\n    \"enrollment_id\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"transferencia\",\r\n    \"amount\": 120,\r\n    \"payment_date\": \"2025-04-12\",\r\n    \"enrollment_id\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/payments/",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"payments",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:17:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"method\": \"transferencia\",\n        \"amount\": 120,\n        \"payment_date\": \"2025-04-12T00:00:00.000000Z\",\n        \"enrollment_id\": 12,\n        \"updated_at\": \"2025-04-12T16:17:46.000000Z\",\n        \"created_at\": \"2025-04-12T16:17:46.000000Z\",\n        \"id\": 16\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"method\": \"efectivo\",\r\n    \"amount\": 180,\r\n    \"payment_date\": \"2025-04-12\",\r\n    \"enrollment_id\": 25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/10",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"efectivo\",\r\n    \"amount\": 180,\r\n    \"payment_date\": \"2025-04-12\",\r\n    \"enrollment_id\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/payments/10",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"payments",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:18:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 10,\n        \"method\": \"efectivo\",\n        \"amount\": 180,\n        \"payment_date\": \"2025-04-12T00:00:00.000000Z\",\n        \"enrollment_id\": 25,\n        \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n        \"updated_at\": \"2025-04-12T16:18:02.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comunicaciones",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/communications",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"communications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}api/v1/communications",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"communications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:18:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Dolores id aliquid corrupti consectetur qui temporibus.\",\n            \"message\": \"Veniam quos excepturi minima est necessitatibus. Deleniti assumenda mollitia sit consectetur perspiciatis minus numquam. Animi culpa labore qui aspernatur sit animi.\",\n            \"sent_date\": \"1979-05-04\",\n            \"communicable\": {\n                \"id\": 106,\n                \"name\": \"Ed Murphy V\",\n                \"description\": \"Aut et ut velit. Officiis dolorem libero ea porro. Hic molestiae omnis eos error odio voluptatibus ex. Aliquam enim totam soluta porro.\",\n                \"cost\": \"922.74\",\n                \"duration\": \"47\",\n                \"image\": null,\n                \"modality\": null,\n                \"academy_id\": 116,\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Impedit incidunt qui ullam nihil dolores.\",\n            \"message\": \"Perferendis dolores explicabo laudantium accusamus natus. Quia placeat repellat ullam aut illum. Ipsam earum saepe enim fuga corporis tempora. Id temporibus aperiam expedita facilis incidunt et dolor.\",\n            \"sent_date\": \"2001-01-03\",\n            \"communicable\": {\n                \"id\": 2,\n                \"name\": \"Reed Kuhic\",\n                \"description\": \"Quis voluptas non nihil porro. Doloremque quisquam minus maxime velit in. Dolores consectetur recusandae fugiat aut est.\",\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Doloremque deleniti sint nostrum fugiat culpa corrupti corporis voluptates.\",\n            \"message\": \"Reiciendis fugiat et facilis voluptas in officia laudantium aut. Beatae animi sit deserunt et numquam optio. Veritatis quas quo natus. Odio voluptatibus nam odio voluptas temporibus.\",\n            \"sent_date\": \"1970-12-17\",\n            \"communicable\": {\n                \"id\": 3,\n                \"name\": \"Chet Schamberger\",\n                \"description\": \"Sit quia et eveniet. Qui enim ipsam qui ut nostrum veniam ut rerum. Facilis dolor dolor sit ducimus. Velit modi veritatis illo tenetur repellat sit.\",\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Velit consequuntur velit id velit nobis.\",\n            \"message\": \"Autem consectetur distinctio molestias voluptatum. Et ad veniam in aut corrupti sint necessitatibus. Numquam ducimus cupiditate facilis tempore est eaque qui. Et sequi soluta reprehenderit consequatur.\",\n            \"sent_date\": \"2003-01-14\",\n            \"communicable\": {\n                \"id\": 4,\n                \"name\": \"Haleigh Yost\",\n                \"description\": \"Culpa velit itaque repudiandae natus incidunt. Veniam ut provident distinctio et harum. Repellat aut mollitia sed est aliquid natus autem id. Nulla labore ea et aut blanditiis rerum reiciendis.\",\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Nam odit dignissimos saepe praesentium incidunt aperiam perspiciatis.\",\n            \"message\": \"Omnis iure repellendus dolore velit consequuntur deserunt qui quia. Tenetur quaerat sit beatae et dolorum. Quae voluptatem aperiam laborum minus quo. Reiciendis nesciunt magni unde vel dicta. Nemo quis modi porro ad.\",\n            \"sent_date\": \"2022-08-12\",\n            \"communicable\": {\n                \"id\": 110,\n                \"name\": \"Felipe Sanford\",\n                \"description\": \"Aut similique molestias ut. Quo provident assumenda commodi quibusdam quod est at.\",\n                \"cost\": \"997.70\",\n                \"duration\": \"31\",\n                \"image\": null,\n                \"modality\": null,\n                \"academy_id\": 120,\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Dolores quisquam inventore rerum libero aliquid quis.\",\n            \"message\": \"Iusto est id totam atque maxime impedit nulla. Ut deserunt neque fugit quis assumenda voluptatem. Eaque ut nihil et consequatur sit quis. Laborum error quia laudantium eligendi.\",\n            \"sent_date\": \"2017-03-06\",\n            \"communicable\": {\n                \"id\": 111,\n                \"name\": \"Gaston Schroeder\",\n                \"description\": \"Nulla sequi autem excepturi et. Vel occaecati officia aliquid quo voluptatem vel sapiente. Officia deserunt sit dolores deleniti fugiat et. Deleniti perferendis impedit praesentium.\",\n                \"cost\": \"533.69\",\n                \"duration\": \"29\",\n                \"image\": null,\n                \"modality\": null,\n                \"academy_id\": 121,\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"Sed eveniet eos ullam quo in eum.\",\n            \"message\": \"Deserunt voluptas commodi aut sequi iusto occaecati quibusdam. Quo inventore dolor maiores labore sunt aut qui. Cum officiis a error sapiente. Pariatur impedit libero explicabo quaerat.\",\n            \"sent_date\": \"1976-04-09\",\n            \"communicable\": {\n                \"id\": 7,\n                \"name\": \"Jada Kling\",\n                \"description\": \"Aut error ut ipsam dolorum. Itaque dolores quia et. Reiciendis aliquid rerum distinctio rerum et autem hic. Temporibus sit voluptatem ad aut unde.\",\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Omnis aut voluptatem occaecati aut aut.\",\n            \"message\": \"Et sequi nesciunt magni asperiores. Quibusdam qui qui quis optio in dolore consequatur. Cum sit pariatur debitis est placeat. Veniam eos reiciendis maxime.\",\n            \"sent_date\": \"2014-09-25\",\n            \"communicable\": {\n                \"id\": 8,\n                \"name\": \"Valentine Gibson\",\n                \"description\": \"Maiores optio dolorum error aliquam. Voluptas blanditiis iste debitis aperiam tenetur quia necessitatibus natus. Quaerat laborum aliquam nihil pariatur rerum minima quis autem.\",\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"title\": \"Odit illo eum nihil iusto delectus dolorem.\",\n            \"message\": \"Distinctio corrupti consequatur et ut. Consequuntur ipsa consequatur voluptatem quo culpa. Totam itaque adipisci animi id fugiat.\",\n            \"sent_date\": \"2023-10-21\",\n            \"communicable\": {\n                \"id\": 114,\n                \"name\": \"Imogene Corwin Jr.\",\n                \"description\": \"Eligendi et deleniti repellendus tempore voluptas. Atque hic commodi aut excepturi quia quas qui. Harum quas et aut dolor. Quisquam sapiente qui harum dolores ex ea.\",\n                \"cost\": \"400.81\",\n                \"duration\": \"4\",\n                \"image\": null,\n                \"modality\": null,\n                \"academy_id\": 124,\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"title\": \"Eos soluta molestias exercitationem odio distinctio in.\",\n            \"message\": \"Doloribus dolores modi quos rerum. Inventore quibusdam consequatur sequi expedita et. Vero qui aut nihil explicabo optio aspernatur.\",\n            \"sent_date\": \"1988-12-12\",\n            \"communicable\": {\n                \"id\": 115,\n                \"name\": \"Lauren Stokes\",\n                \"description\": \"Reiciendis labore odit eos eaque aut in. Deleniti non perferendis eum. Ex sunt iure suscipit minus.\",\n                \"cost\": \"613.41\",\n                \"duration\": \"12\",\n                \"image\": null,\n                \"modality\": null,\n                \"academy_id\": 125,\n                \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/communications?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/communications?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/communications?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/communications\",\n        \"per_page\": 15,\n        \"to\": 10,\n        \"total\": 10\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}api/v1/communications/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"communications",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/communications/1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"communications",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:19:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Dolores id aliquid corrupti consectetur qui temporibus.\",\n        \"message\": \"Veniam quos excepturi minima est necessitatibus. Deleniti assumenda mollitia sit consectetur perspiciatis minus numquam. Animi culpa labore qui aspernatur sit animi.\",\n        \"sent_date\": \"1979-05-04\",\n        \"communicable\": {\n            \"id\": 106,\n            \"name\": \"Ed Murphy V\",\n            \"description\": \"Aut et ut velit. Officiis dolorem libero ea porro. Hic molestiae omnis eos error odio voluptatibus ex. Aliquam enim totam soluta porro.\",\n            \"cost\": \"922.74\",\n            \"duration\": \"47\",\n            \"image\": null,\n            \"modality\": null,\n            \"academy_id\": 116,\n            \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"updated_at\": \"2025-04-12T13:56:59.000000Z\",\n            \"deleted_at\": null\n        },\n        \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n        \"updated_at\": \"2025-04-12T13:56:59.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Comunicado de prueba\",\r\n    \"message\": \"Aviso de reunión de padres de familia\",\r\n    \"sent_date\": \"2025-05-05\",\r\n    \"communicable_id\": 1,\r\n    \"communicable_type\": \"group\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/communications/",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"communications",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Comunicado de prueba\",\r\n    \"message\": \"Aviso de reunión de padres de familia\",\r\n    \"sent_date\": \"2025-05-05\",\r\n    \"communicable_id\": 1,\r\n    \"communicable_type\": \"group\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/communications/",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"communications",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:19:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 11,\n        \"title\": \"Comunicado de prueba\",\n        \"message\": \"Aviso de reunión de padres de familia\",\n        \"sent_date\": \"2025-05-05\",\n        \"created_at\": \"2025-04-12T16:19:33.000000Z\",\n        \"updated_at\": \"2025-04-12T16:19:33.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Comunicado de prueba\",\r\n    \"message\": \"Aviso de reunión de padres de familia\",\r\n    \"sent_date\": \"2025-05-05\",\r\n    \"communicable_id\": 2,\r\n    \"communicable_type\": \"group\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/communications/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"communications",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Comunicado de prueba\",\r\n    \"message\": \"Aviso de reunión de padres de familia\",\r\n    \"sent_date\": \"2025-05-05\",\r\n    \"communicable_id\": 2,\r\n    \"communicable_type\": \"group\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/communications/2",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"communications",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Apr 2025 16:20:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Comunicado de prueba\",\n        \"message\": \"Aviso de reunión de padres de familia\",\n        \"sent_date\": \"2025-05-05\",\n        \"created_at\": \"2025-04-12T13:56:59.000000Z\",\n        \"updated_at\": \"2025-04-12T16:20:03.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}api/v1/communications/12",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"communications",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "1|CrWV6JpG482FIgqTwdBpLPgBgDUJ4ZGd5YOSzHfL4dfdd1a0",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/",
+			"type": "string"
+		},
+		{
+			"key": "xsrf-cookie",
+			"value": "eyJpdiI6IkIrUUR0Y3NvWUNIOC9PMXZjVC9BaVE9PSIsInZhbHVlIjoid2dWMFdFcTRJcitJYWIrS3E3SFpIek1BbmtheGkvRnVNN0dzWnUvbUJIYUd4cVJFd0R3S2hMQWF5VHo1eTBVZlZUbjlPUmRUeE1XZHJPRFh6eTJFbDd0a1BRbldzeVNwS0YxQ2JOb3U5bUs2R3pPc25GODM5amRVNXYwWUlxRlciLCJtYWMiOiI5YjAwMjViNThhMDBkY2RjMTdlY2RlNzBhNmRiMDE3ZDM0ZWU2NDRmN2I1ODY1MzFmZTgyMjUwNGY5NDRkYzNjIiwidGFnIjoiIn0%3D\n"
+		}
+	]
+}

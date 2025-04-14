@@ -55,9 +55,13 @@ php artisan serve
 Según lo solicitado se crearon los siguientes endpoints: 
 
 http://localhost:8000/api/v1/academies/
+
 http://localhost:8000/api/v1/courses/
+
 http://localhost:8000/api/v1/payments/
+
 http://localhost:8000/api/v1/communications/
+
 http://localhost:8000/api/v1/enrollments/
 
 ### Los endpoints están protegidos, para acceder se debe generar el bearer token ingresando el correo y contraseña en: ###
@@ -66,6 +70,8 @@ http://localhost:8000/api/login/
 
 correo: ramosdumas_ismael@hotmail.com
 contraseña: password12345
+
+En la raiz del proyecto encontrará la colección en Postman, con ejemplos de sus respectivos payloads en el archivo: MATRICULAS Y NOTIFICACIONES.postman_collection.json
 
 
 ## 📝 Notas
