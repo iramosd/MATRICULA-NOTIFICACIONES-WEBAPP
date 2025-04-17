@@ -1,6 +1,6 @@
 # Proyecto Laravel con MySQL
 
-Este proyecto ha sido desarrollado utilizando **Laravel v12**, **PHP 8.2** y **MySQL**, con herramientas modernas como **Node.js v22**.
+Proyecto demo catálogo de cursos, desarrollado con **Laravel v12**, **Livewire 3**, **PHP 8.2** y **MySQL**. Necesita **Node.js v22** para el build de producción.
 
 ## 🚀 Requisitos
 
